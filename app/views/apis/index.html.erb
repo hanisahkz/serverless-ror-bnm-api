@@ -1,0 +1,98 @@
+<div class="container">
+  <!-- first row -->
+  <div class="row">
+    <div class="mx-auto col-12">
+      <h2 class="mx-auto-col-12 text-center my-5">
+        Rate as of <%= "#{@date_last_updated}" %>
+      </h2>
+    </div>
+
+    <!-- second row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          <div id="nav-tab" class="nav nav-tabs nav-fill" role="tablist">
+            <a id="nav-home-tab"
+               class="nav-item nav-link active"
+               aria-controls="nav-home"
+               aria-selected="true" data-toggle="tab"
+               href="#nav-home" role="tab">Exchange Rates
+            </a>
+            <a id="nav-profile-tab" class="nav-item nav-link"
+               aria-controls="nav-profile"
+               aria-selected="false"
+               data-toggle="tab"
+               href="#nav-profile"
+               role="tab">Consumer Alert
+            </a>
+          </div>
+        </nav>
+        <div id="nav-tabContent" class="tab-content py-3 px-3 px-sm-0">
+          <!-- Nav 1: Home -->
+          <div id="nav-home" class="tab-pane fade show active" aria-labelledby="nav-home-tab" role="tabpanel">
+            <div class="row card-deck">
+              <% @exchange_rate_json['data'].each do |exchange_rate| %>
+                <div class="col-lg-4 col-md-4 col-12">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="mx-auto-col-12 text-center mt-5">
+                      <!-- monitor this -->
+                      <span class="flag-icon flag-bnm-wrapper <%= "#{check_and_assign_flag(exchange_rate['currency_code'].downcase)}" %>" ></span>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= "#{check_and_assign_country_name(exchange_rate['currency_code'].downcase)}" %></h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= exchange_rate['currency_code'] %></h6>
+                      <ul>
+                        <li>
+                          <p class="card-text">
+                            <span class="pr-1"><b>Buy: </b></span>
+                            <span><%= exchange_rate['rate']['buying_rate'] %></span>
+                          </p>
+                        </li>
+                        <li>
+                          <p class="card-text">
+                            <span class="pr-1"><b>Sell: </b></span>
+                            <span><%= exchange_rate['rate']['selling_rate'] %></span>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- Nav 2: Profile -->
+          <div id="nav-profile" class="tab-pane fade" aria-labelledby="nav-profile-tab" role="tabpanel">
+            <div class="row card-deck">
+              <% @consumer_alert_json['data'].each do |consumer_alert| %>
+                <div class="col-lg-4 col-md-4 col-12">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= consumer_alert['name'].truncate(25) %></h5>
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        <span>Registration Number: <%= "#{consumer_alert['regisration_number'].empty? ? 'N/A' : consumer_alert['regisration_number']}" %></span>
+                        <p class="card-text">
+                          <span>
+                            <% if consumer_alert['websites'][0].nil? %>
+                              Website: N/A
+                            <% else %>
+                              <%= link_to 'Website', "#{check_and_prepend_http(consumer_alert['websites'][0])}", target: '_blank' %>
+                            <% end %>
+                          </span>
+                        </p>
+                        <p class="card-text">
+                          <small class="pr-1">Entry added:</small>
+                          <small><%= consumer_alert['added_date'].nil? ? 'Not available' : consumer_alert['added_date'].to_time.strftime('%b %d, %Y') %></small>
+                        </p>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

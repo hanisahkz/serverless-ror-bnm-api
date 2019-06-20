@@ -1,6 +1,10 @@
 source "https://rubygems.org"
 
 gem "jets"
+gem 'slim-rails'
+gem 'faraday'
+gem "font-awesome-rails"
+gem 'flag-icons-rails'
 
 # Include webpacker if you are you are building html pages
 gem "webpacker", git: "https://github.com/tongueroo/webpacker.git", branch: "jets"
