@@ -14,7 +14,7 @@ No database involved. But ultimately, going serverless means lesser need for inf
 $ bundle install
 
 # start server at localhost:3000
-$ jets server
+$ jets serve
 ```
 
 ## Production
@@ -27,5 +27,5 @@ $ jets deploy
 ## Tools Used
 - `rubymine` for IDE
 - `postman` for REST client
-- `jets` fort serverless framework
+- `jets`, a Ruby gem for serverless framework
 - [Ruby Toolbox](https://www.ruby-toolbox.com/), a site that compares libraries created in Ruby.
