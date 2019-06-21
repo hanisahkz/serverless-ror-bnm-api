@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js" data-auto-replace-svg></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
   <meta name="theme-color" content="#000000">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ServerlessRoR</title>
@@ -16,8 +18,7 @@
     <nav class="navbar sticky-top navbar-dark bg-dark">
       <div class="container justify-content-md-center">
           <span class="branding">
-            <!-- todo: to fix -->
-            <%#= fa_icon "github" %>
+            <i class="fab fa-github"></i>
           </span>
         <span>
           <a class="navbar-brand"
@@ -29,7 +30,7 @@
     <%= yield %>
     </div>
   </section>
-  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.slim.min.js' %>
-  <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' %>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
