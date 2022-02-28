@@ -223,8 +223,8 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.4)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
-    rspec-mocks (3.8.1)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
@@ -256,8 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capybara
-  dynomite
+  capybara (>= 3.24.0)
   faraday
   jets
   launchy
